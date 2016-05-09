@@ -1,0 +1,17 @@
+{% extends "_layout.html" %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block "ogp" %}
+{% endblock %}
+
+{% block "head" %}
+    {% render_bundle 'restaurant' %}
+{% endblock %}
+
+{% block "body" %}
+<div>
+    <h2>{{ restaurant.name }}</h2>
+    <p>{{ restaurant.address }}</p>
+</div>
+{% endblock %}

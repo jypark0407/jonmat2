@@ -1,0 +1,28 @@
+{% extends "_layout.html" %}
+
+{% block "head" %}
+{% endblock %}
+
+{% block "ogp" %}
+{% endblock %}
+
+{% block "body" %}
+<div>
+    <div class="by-who">
+        <h3><a href="{% url 'congress_member_list' %}">By Who</a></h3>
+        <ul>
+            {% for congress_member in hot_congress_members %}
+            <li><a href="{% url 'congress_member_detail' congress_member.id %}">{{ congress_member.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="by-where">
+        <h3><a href="{% url 'restaurant_list' %}">By Where</a></h3>
+        <ul>
+            {% for restaurant in hot_restaurants %}
+            <li><a href="{% url 'restaurant_detail' restaurant.id %}">{{ restaurant.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

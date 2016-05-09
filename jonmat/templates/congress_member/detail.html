@@ -1,0 +1,34 @@
+{% extends "_layout.html" %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block "ogp" %}
+{% endblock %}
+
+{% block "head" %}
+    {% render_bundle 'restaurant' %}
+{% endblock %}
+
+{% block "body" %}
+<div class="congress-member-detail">
+    <div class="info">
+        <h2>{{ congress_member.party }} {{ congress_member.name }}</h2>
+        <div class="photo">
+            <h1>사-진</h1>
+        </div>
+        <div>
+            <a href="">원본 데이터 보기</a>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="related-restaurants">
+        <ul>
+            {% for eats in congress_member.eats.all %}
+            <li class="restaurant"><a href="{% url 'restaurant_detail' eats.restaurant.id %}">{{ eats.restaurant.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
