@@ -6,24 +6,36 @@ var port = 8008;
 
 module.exports = {
     port: port,
-    devtool: 'source-map',
+    // devtool: 'source-map',
+    devtool: 'eval',
     context: path.join(__dirname, 'front'),
     entry: {
         'commons': [
-            'commons.js'
+            'webpack-dev-server/client?http://0.0.0.0:' + port,
+            'webpack/hot/only-dev-server',
+            'commons.jsx'
+        ],
+        'index': [
+            'webpack-dev-server/client?http://0.0.0.0:' + port,
+            'webpack/hot/only-dev-server',
+            'index.jsx'
         ],
         'restaurant': [
-            'restaurant.js'
+            'webpack-dev-server/client?http://0.0.0.0:' + port,
+            'webpack/hot/only-dev-server',
+            'restaurant.jsx'
         ],
         'congress-member': [
-            'congress-member.js'
+            'webpack-dev-server/client?http://0.0.0.0:' + port,
+            'webpack/hot/only-dev-server',
+            'congress-member.jsx'
         ]
     },
     output: {
         path: path.join(__dirname, 'static/build/'),
         filename: '[name].js',
-        // publicPath: 'http://localhost:' + port + '/static/'
-        publicPath: '/static/build/'
+        publicPath: 'http://localhost:' + port + '/static/'
+        // publicPath: '/static/build/'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -40,7 +52,10 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.jsx?$/,
-            loaders: ['react-hot', 'babel?presets[]=es2015&presets[]=react'],
+            loader: 'babel',
+            query: {
+                presets: [ 'es2015', 'react', 'react-hmre' ]
+            },
             exclude: 'node_modules'
         }, {
             test: /\.json$/,
