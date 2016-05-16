@@ -1,6 +1,9 @@
 {% extends "_layout.html" %}
 
+{% load render_bundle from webpack_loader %}
+
 {% block "head" %}
+    {% render_bundle 'index' %}
 {% endblock %}
 
 {% block "ogp" %}
