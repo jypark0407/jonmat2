@@ -1,1 +1,1 @@
-import './commons.styl'
+import 'commons.styl'

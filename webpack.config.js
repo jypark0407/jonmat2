@@ -25,10 +25,20 @@ module.exports = {
             'webpack/hot/only-dev-server',
             'restaurant.jsx'
         ],
-        'congress-member': [
+        'restaurantList': [
             'webpack-dev-server/client?http://0.0.0.0:' + port,
             'webpack/hot/only-dev-server',
-            'congress-member.jsx'
+            'restaurantList.jsx'
+        ],
+        'congressMember': [
+            'webpack-dev-server/client?http://0.0.0.0:' + port,
+            'webpack/hot/only-dev-server',
+            'congressMember.jsx'
+        ],
+        'congressMemberList': [
+            'webpack-dev-server/client?http://0.0.0.0:' + port,
+            'webpack/hot/only-dev-server',
+            'congressMemberList.jsx'
         ]
     },
     output: {
@@ -54,7 +64,7 @@ module.exports = {
             test: /\.jsx?$/,
             loader: 'babel',
             query: {
-                presets: [ 'es2015', 'react', 'react-hmre' ]
+                presets: ['es2015', 'react', 'react-hmre']
             },
             exclude: 'node_modules'
         }, {
