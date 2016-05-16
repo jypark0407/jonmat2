@@ -3,7 +3,7 @@ from jonmat.models import CongressMember
 
 
 def congress_member_list(request):
-    members = CongressMember.objects.all()
+    members = CongressMember.objects.most_eaten()
 
     return render(request, 'congress_member/list.html', dict(
         congress_members=members

@@ -4,11 +4,7 @@ from jonmat.models import Restaurant
 
 
 def restaurant_list(request):
-    # order by 방문횟수
-    restaurants = Restaurant.objects.annotate(eat_times=Count('eats')).order_by('-eat_times')
-
-    # order by total price
-    # restaurants = Restaurant.objects.annotate(total_price=Sum('eats__price')).order_by('-total_price')
+    restaurants = Restaurant.objects.most_visited()
 
     return render(request, 'restaurant/list.html', dict(
         restaurants=restaurants

@@ -14,6 +14,13 @@ from django.db import models as m
 #         (정의당, '정의당'),
 #     )
 
+class CongressMemberManager(m.Manager):
+    def most_spent(self):
+        return self.annotate(total_price=m.Sum('eats__price')).order_by('-total_price')
+
+    def most_eaten(self):
+        return self.annotate(eat_times=m.Count('eats')).order_by('-eat_times')
+
 
 class CongressMember(m.Model):
     id = m.AutoField(primary_key=True)
@@ -21,8 +28,18 @@ class CongressMember(m.Model):
     party = m.CharField(max_length=20)
     name = m.CharField(max_length=20)
 
+    objects = CongressMemberManager()
+
     def __str__(self):
         return '<CongressMember name={name} party={party}>'.format(name=self.name, party=self.party)
+
+
+class RestaurantManager(m.Manager):
+    def most_spent(self):
+        return self.annotate(total_price=m.Sum('eats__price')).order_by('-total_price')
+
+    def most_visited(self):
+        return self.annotate(eat_times=m.Count('eats')).order_by('-eat_times')
 
 
 class Restaurant(m.Model):
@@ -31,6 +48,8 @@ class Restaurant(m.Model):
     address = m.CharField(max_length=200, null=True)
     lng = m.FloatField(null=True)
     lat = m.FloatField(null=True)
+
+    objects = RestaurantManager()
 
     def __str__(self):
         return '<Restaurant name={name} address={address}>'.format(name=self.name, address=self.address)
