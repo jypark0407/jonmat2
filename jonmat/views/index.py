@@ -10,3 +10,5 @@ def index(request):
         hot_restaurants=hot_restaurants,
         hot_congress_members=hot_congress_members,
     ))
+
+index.distill_func = lambda: None

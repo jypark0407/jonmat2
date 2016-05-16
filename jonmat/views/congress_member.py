@@ -9,6 +9,8 @@ def congress_member_list(request):
         congress_members=members
     ))
 
+congress_member_list.distill_func = lambda: None
+
 
 def congress_member_detail(request, member_id):
     member = CongressMember.objects.get(id=member_id)
@@ -16,3 +18,5 @@ def congress_member_detail(request, member_id):
     return render(request, 'congress_member/detail.html', dict(
         congress_member=member
     ))
+
+congress_member_detail.distill_func = lambda: None
