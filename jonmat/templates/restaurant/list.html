@@ -1,10 +1,16 @@
 {% extends "_layout.html" %}
 
+{% load render_bundle from webpack_loader %}
+
+{% block "head" %}
+    {% render_bundle 'restaurantList' %}
+{% endblock %}
+
 {% block "body" %}
 <div>
-    <ul>
+    <ul class="restaurant-list">
         {% for restaurant in restaurants %}
-        <li><a href="{% url 'restaurant_detail' restaurant.id %}">{{ restaurant.name }}</a></li>
+        <li class="restaurant-list-item"><a href="{% url 'restaurant_detail' restaurant.id %}">{{ restaurant.name }}</a></li>
         {% endfor %}
     </ul>
 </div>

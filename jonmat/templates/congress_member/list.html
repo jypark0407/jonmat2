@@ -1,5 +1,11 @@
 {% extends "_layout.html" %}
 
+{% load render_bundle from webpack_loader %}
+
+{% block "head" %}
+    {% render_bundle 'congressMemberList' %}
+{% endblock %}
+
 {% block "body" %}
 <div>
     <ul>

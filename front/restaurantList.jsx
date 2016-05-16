@@ -1,2 +1,2 @@
-import 'commons.styl';
-
+import 'commons.styl'
+import 'restaurantList.styl'
