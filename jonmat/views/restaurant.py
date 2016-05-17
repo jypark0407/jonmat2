@@ -1,4 +1,3 @@
-from django.db.models import Sum, Count
 from django.shortcuts import render
 from jonmat.models import Restaurant
 
@@ -11,9 +10,19 @@ def restaurant_list(request):
     ))
 
 
+def restaurant_list_distill_func():
+    return None
+
+
 def restaurant_detail(request, restaurant_id):
     restaurant = Restaurant.objects.get(id=restaurant_id)
 
     return render(request, 'restaurant/detail.html', dict(
         restaurant=restaurant
     ))
+
+
+def restaurant_detail_distill_func():
+    for x in Restaurant.objects.all():
+        yield str(x.id)
+

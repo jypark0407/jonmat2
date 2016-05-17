@@ -11,4 +11,6 @@ def index(request):
         hot_congress_members=hot_congress_members,
     ))
 
-index.distill_func = lambda: None
+
+def index_distill_func():
+    return None

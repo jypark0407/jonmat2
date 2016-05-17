@@ -9,7 +9,9 @@ def congress_member_list(request):
         congress_members=members
     ))
 
-congress_member_list.distill_func = lambda: None
+
+def congress_member_list_distill_func():
+    return None
 
 
 def congress_member_detail(request, member_id):
@@ -19,4 +21,7 @@ def congress_member_detail(request, member_id):
         congress_member=member
     ))
 
-congress_member_detail.distill_func = lambda: None
+
+def congress_member_detail_distill_func():
+    for x in CongressMember.objects.all():
+        yield str(x.id)
