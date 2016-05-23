@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "node webpack.server.js",
-    "build": "webpack --config webpack.config.prod.js && python manage.py collectstatic --noinput&& python manage.py distill-local --force ./build/",
+    "build": "webpack --config webpack.config.prod.js && python manage.py collectstatic --noinput && python manage.py distill-local --force",
     "stage": "echo \"upload files to s3\""
   },
   "author": "",
