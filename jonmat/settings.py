@@ -130,3 +130,5 @@ STATICFILES_DIRS = (
 )
 
 DATA_DIR = os.path.join(BASE_DIR, 'data')
+
+DISTILL_DIR = os.path.join(BASE_DIR, 'build')
