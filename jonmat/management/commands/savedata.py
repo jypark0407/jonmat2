@@ -1,7 +1,5 @@
 import json
-
 from os import path
-
 from django.conf import settings
 from django.core.management import BaseCommand
 from jonmat.models import CongressMember, Restaurant, Eat

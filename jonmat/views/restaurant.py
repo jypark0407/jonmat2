@@ -25,4 +25,3 @@ def restaurant_detail(request, restaurant_id):
 def restaurant_detail_distill_func():
     for x in Restaurant.objects.all():
         yield str(x.id)
-
